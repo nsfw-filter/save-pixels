@@ -1,8 +1,6 @@
 'use strict'
 
-var ContentStream = require('contentstream')
 var GifEncoder = require('gif-encoder')
-var jpegJs = require('jpeg-js')
 var PNG = require('pngjs-nozlib').PNG
 var ndarray = require('ndarray')
 var ops = require('ndarray-ops')
@@ -94,8 +92,7 @@ module.exports = function savePixels (array, type, options) {
         width: width,
         height: height
       }
-      var jpegImageData = jpegJs.encode(rawImageData, options.quality)
-      return new ContentStream(jpegImageData.data)
+      return rawImageData
 
     case 'GIF':
     case '.GIF':
